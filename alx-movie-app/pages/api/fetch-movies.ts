@@ -1,7 +1,9 @@
 import { MoviesProps } from "@/interfaces";
 import { NextApiRequest, NextApiResponse } from "next";
-export default async function handler (request: NextApiRequest, response: NextApiResponse)  {
-
+export default async function handler(
+  request: NextApiRequest,
+  response: NextApiResponse
+) {
   if (request.method === "POST") {
     const { year, page, genre } = request.body;
     const date = new Date();
@@ -26,7 +28,7 @@ export default async function handler (request: NextApiRequest, response: NextAp
       movies,
     });
   } else {
-    response.setHeader('Allow', ['POST']);
+    response.setHeader("Allow", ["POST"]);
     response.status(405).end(`Method ${request.method} Not Allowed in here`);
   }
-};
+}
